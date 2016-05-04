@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="380" y="337"/>
         </scene>
-        <!--View Controller-->
+        <!--New Game View Controller-->
         <scene sceneID="xit-at-wVl">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="rOe-FA-e6z" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="rOe-FA-e6z" customClass="NewGameViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZJu-u6-c64"/>
                         <viewControllerLayoutGuide type="bottom" id="JXV-Ob-n4f"/>
@@ -109,6 +109,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Create Game"/>
                                 <connections>
+                                    <action selector="createGame:" destination="rOe-FA-e6z" eventType="touchUpInside" id="A1k-OX-0Tv"/>
                                     <segue destination="edB-d6-1bT" kind="show" id="hfJ-le-Etu"/>
                                 </connections>
                             </button>
@@ -136,6 +137,9 @@
                             <constraint firstItem="aaB-b0-afY" firstAttribute="centerX" secondItem="53n-TM-Sai" secondAttribute="centerX" id="rMg-rJ-V3l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="name" destination="LTJ-1Z-wt2" id="OWd-Te-R5I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNz-Cq-a7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -314,10 +318,10 @@ Daniel</string>
             </objects>
             <point key="canvasLocation" x="3278.5" y="395.5"/>
         </scene>
-        <!--View Controller-->
+        <!--New Game View Controller-->
         <scene sceneID="SWe-BB-Amd">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="nnk-fv-ZHM" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="nnk-fv-ZHM" customClass="NewGameViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="O7L-w7-2ju"/>
                         <viewControllerLayoutGuide type="bottom" id="JsJ-Cv-rQB"/>
@@ -336,6 +340,7 @@ Daniel</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Join Game"/>
                                 <connections>
+                                    <action selector="joinGame:" destination="nnk-fv-ZHM" eventType="touchUpInside" id="z8V-SH-emH"/>
                                     <segue destination="edB-d6-1bT" kind="show" id="ba7-oJ-Blr"/>
                                 </connections>
                             </button>
@@ -405,6 +410,10 @@ Daniel</string>
                             <constraint firstItem="sLy-HO-Q55" firstAttribute="centerX" secondItem="7bU-Xr-bDA" secondAttribute="centerX" id="yCN-ro-dOr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="joinCode" destination="QWL-zN-ckO" id="6Jh-1p-ail"/>
+                        <outlet property="joinName" destination="UwS-gn-JCf" id="1ff-It-ybz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GT-ni-0mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -412,8 +421,8 @@ Daniel</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jrz-X8-agz"/>
         <segue reference="ba7-oJ-Blr"/>
         <segue reference="86f-pP-uQo"/>
+        <segue reference="jrz-X8-agz"/>
     </inferredMetricsTieBreakers>
 </document>
