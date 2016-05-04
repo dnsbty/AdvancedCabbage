@@ -293,6 +293,7 @@
 				952D240B1CCB012C007E0093 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
