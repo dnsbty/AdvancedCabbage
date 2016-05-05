@@ -87,6 +87,7 @@ class Game {
                     numPlayers = responseJSON["numPlayers"] as? Int,
                     players = responseJSON["players"] as? [AnyObject] else {
                         print("Invalid game information received when joining game")
+                        print(response.result.value)
                         return
                 }
                 
@@ -101,6 +102,7 @@ class Game {
     }
     
     // MARK: Get player list
+    
     func getPlayers(completion: () -> Void) {
         Alamofire.request(APIRouter.GetPlayers(self.id))
             .responseJSON { response in
@@ -122,6 +124,29 @@ class Game {
                 self.numPlayers = self.players.count
                 self.started = started
                 
+                completion()
+        }
+    }
+    
+    // MARK: Start Game
+    
+    func start(completion: () -> Void) {
+        Alamofire.request(APIRouter.StartGame(self.id))
+            .responseJSON { response in
+                // check if the response was successful
+                guard response.result.isSuccess else {
+                    print("Error while retrieving player list: \(response.result.error)")
+                    return
+                }
+                
+                // make sure response types are as expected
+                guard let responseJSON = response.result.value as? [String: AnyObject],
+                    started = responseJSON["started"] as? Bool else {
+                        print("Invalid information received when starting game")
+                        return
+                }
+                
+                self.started = started
                 completion()
         }
     }

@@ -15,6 +15,7 @@ public enum APIRouter: URLRequestConvertible {
     case CreateGame(String)
     case JoinGame(String, String)
     case GetPlayers(String)
+    case StartGame(String)
     
     public var URLRequest : NSMutableURLRequest {
         let result : (path: String, method: Alamofire.Method, parameters: [String: AnyObject]?) = {
@@ -27,6 +28,8 @@ public enum APIRouter: URLRequestConvertible {
                 return ("/games/join", .POST, params)
             case .GetPlayers(let id):
                 return ("/games/\(id)/players", .GET, nil)
+            case .StartGame(let id):
+                return("/games/\(id)/start", .POST, nil)
             }
         }()
         
