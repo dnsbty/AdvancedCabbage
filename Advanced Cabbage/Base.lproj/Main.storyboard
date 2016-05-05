@@ -233,14 +233,14 @@ Daniel</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMe-KV-YfZ">
                                 <rect key="frame" x="163" y="246" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
-                                <connections>
-                                    <segue destination="wde-Fj-TJB" kind="show" id="jrz-X8-agz"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="M9I-px-iwl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiR-vN-3Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -273,14 +273,14 @@ Daniel</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEW-xz-T4R">
                                 <rect key="frame" x="163" y="617" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
-                                <connections>
-                                    <segue destination="BMT-KN-1gY" kind="show" id="ZS6-AM-n7r"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="BMT-KN-1gY" kind="show" identifier="nextRound" id="9Yy-GB-vSj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoU-CB-bml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -307,9 +307,6 @@ Daniel</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-HF-dM1">
                                 <rect key="frame" x="163" y="617" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
-                                <connections>
-                                    <segue destination="wde-Fj-TJB" kind="show" id="V2X-br-9jK"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvj-75-pm5">
                                 <rect key="frame" x="106" y="57" width="163" height="30"/>
@@ -320,6 +317,9 @@ Daniel</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="RNN-Ff-QiR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fq7-hk-WTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -431,6 +431,6 @@ Daniel</string>
     <inferredMetricsTieBreakers>
         <segue reference="egL-zG-cnU"/>
         <segue reference="86f-pP-uQo"/>
-        <segue reference="jrz-X8-agz"/>
+        <segue reference="M9I-px-iwl"/>
     </inferredMetricsTieBreakers>
 </document>

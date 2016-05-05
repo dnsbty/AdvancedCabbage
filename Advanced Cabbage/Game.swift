@@ -20,6 +20,8 @@ class Game {
     var numPlayers = 0
     var players = [Player]()
     var words = []
+    var playerID = 0
+    var currentRound = 0
     
     // MARK: Singleton
     
@@ -32,8 +34,8 @@ class Game {
     }
     
     private init() {
-        // This guarantees that code outside this file can't instantiate a ScriptureRenderer.
-        // So others must use the sharedRenderer singleton.
+        // This guarantees that code outside this file can't instantiate a Game.
+        // So others must use the shared singleton.
     }
     
     // MARK: Create Game
@@ -61,6 +63,7 @@ class Game {
                 self.id = id
                 self.numPlayers = numPlayers
                 self.parsePlayerList(players)
+                self.playerID = 0
                 
                 completion()
         }
@@ -91,6 +94,7 @@ class Game {
                 self.id = id
                 self.numPlayers = numPlayers
                 self.parsePlayerList(players)
+                self.playerID = numPlayers - 1
                 
                 completion()
         }
