@@ -48,15 +48,23 @@ class Game {
                 }
                 
                 // make sure response types are as expected
-                guard let responseJSON = response.result.value as? [String: AnyObject] else {
-                    print("Invalid game information received when creating game")
-                    return
+                guard let responseJSON = response.result.value as? [String: AnyObject],
+                    code = responseJSON["code"] as? String,
+                    id = responseJSON["_id"] as? String,
+                    numPlayers = responseJSON["numPlayers"] as? Int,
+                    players = responseJSON["players"] as? [AnyObject] else {
+                        print("Invalid game information received when creating game")
+                        return
                 }
                 
-                print("Join code: \(responseJSON["code"])")
-                print("Game ID: \(responseJSON["_id"])")
+                self.code = code
+                self.id = id
+                self.numPlayers = numPlayers
+                self.players = players
         }
     }
+    
+    // MARK: Join Game
     
     func join(code: String, name: String) {
         Alamofire.request(APIRouter.JoinGame(code, name))
@@ -68,13 +76,19 @@ class Game {
                 }
                 
                 // make sure response types are as expected
-                guard let responseJSON = response.result.value as? [String: AnyObject] else {
-                    print("Invalid game information received when joining game")
-                    return
+                guard let responseJSON = response.result.value as? [String: AnyObject],
+                    code = responseJSON["code"] as? String,
+                    id = responseJSON["_id"] as? String,
+                    numPlayers = responseJSON["numPlayers"] as? Int,
+                    players = responseJSON["players"] as? [AnyObject] else {
+                        print("Invalid game information received when joining game")
+                        return
                 }
                 
-                print("Join code: \(responseJSON["code"])")
-                print("Game ID: \(responseJSON["_id"])")
+                self.code = code
+                self.id = id
+                self.numPlayers = numPlayers
+                self.players = players
         }
     }
 }
