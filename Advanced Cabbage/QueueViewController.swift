@@ -26,7 +26,15 @@ class QueueViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("View loaded")
         joinCode.text = Game.shared.code
+        updatePlayerList()
+    }
+    
+    func updatePlayerList() {
+        var list = ""
+        for index in 0 ..< Game.shared.players.count {
+            list += "\(index+1). \(Game.shared.players[index].name)\n"
+        }
+        playerList.text = list
     }
 }

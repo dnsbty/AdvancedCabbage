@@ -18,7 +18,7 @@ class Game {
     var created = NSDate()
     var started = false
     var numPlayers = 0
-    var players = []
+    var players = [Player]()
     var words = []
     
     // MARK: Singleton
@@ -60,9 +60,8 @@ class Game {
                 self.code = code
                 self.id = id
                 self.numPlayers = numPlayers
-                self.players = players
+                self.parsePlayerList(players)
                 
-                print("Saving game info")
                 completion()
         }
     }
@@ -91,9 +90,30 @@ class Game {
                 self.code = code
                 self.id = id
                 self.numPlayers = numPlayers
-                self.players = players
+                self.parsePlayerList(players)
                 
                 completion()
+        }
+    }
+    
+    // MARK: Parse a list of players
+    
+    func parsePlayerList(list: [AnyObject]) {
+        
+        // iterate through all players in the array
+        for index in 0 ..< list.count {
+            
+            // make sure the player has all expected fields
+            guard let id = list[index]["_id"] as? String,
+                creator = list[index]["creator"] as? Bool,
+                name = list[index]["name"] as? String,
+                number = list[index]["number"] as? Int else {
+                    print("Invalid player information received")
+                    return
+            }
+            
+            // if so create a new player object, and append it to the array
+            self.players.append(Player(id: id, creator: creator, name: name, number: number))
         }
     }
 }

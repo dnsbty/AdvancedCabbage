@@ -9,13 +9,15 @@
 import Foundation
 
 class Player {
+    var id: String
     var name: String
-    var id: Int
+    var number: Int
     var creator: Bool
     
-    init(name : String, id: Int, creator: Bool) {
+    init(id: String, creator: Bool, name: String, number: Int) {
         self.name = name
         self.id = id
         self.creator = creator
+        self.number = number
     }
 }
