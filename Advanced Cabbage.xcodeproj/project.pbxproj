@@ -19,6 +19,7 @@
 		95ADB0571CDABF1000AFB46B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB0561CDABF1000AFB46B /* Player.swift */; };
 		95ADB0591CDAC13600AFB46B /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB0581CDAC13600AFB46B /* Word.swift */; };
 		95ADB05B1CDAC1E400AFB46B /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB05A1CDAC1E400AFB46B /* Answer.swift */; };
+		95ADB05D1CDADBD800AFB46B /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB05C1CDADBD800AFB46B /* QueueViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		95ADB0561CDABF1000AFB46B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		95ADB0581CDAC13600AFB46B /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		95ADB05A1CDAC1E400AFB46B /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		95ADB05C1CDADBD800AFB46B /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
 		9A0FBBD087A543A0727E805F /* Pods_Advanced_Cabbage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Advanced_Cabbage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32335921EA3665F001343C0 /* Pods-Advanced Cabbage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advanced Cabbage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Advanced Cabbage/Pods-Advanced Cabbage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 				95ADB04B1CDA807100AFB46B /* APIRouter.swift */,
 				952D23FC1CCB012C007E0093 /* ViewController.swift */,
 				95ADB04D1CDA827800AFB46B /* NewGameViewController.swift */,
+				95ADB05C1CDADBD800AFB46B /* QueueViewController.swift */,
 				952D23FA1CCB012C007E0093 /* AppDelegate.swift */,
 			);
 			name = Controller;
@@ -261,6 +264,7 @@
 				95ADB0571CDABF1000AFB46B /* Player.swift in Sources */,
 				952D23FB1CCB012C007E0093 /* AppDelegate.swift in Sources */,
 				95ADB05B1CDAC1E400AFB46B /* Answer.swift in Sources */,
+				95ADB05D1CDADBD800AFB46B /* QueueViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

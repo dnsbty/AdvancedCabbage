@@ -14,16 +14,25 @@ class NewGameViewController : UIViewController {
     // MARK: Outlets
     
     @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var createButton: UIButton!
+    
     @IBOutlet weak var joinName: UITextField!
     @IBOutlet weak var joinCode: UITextField!
+    @IBOutlet weak var joinButton: UIButton!
     
     // MARK: Actions
     
     @IBAction func createGame(sender: AnyObject) {
-        Game.shared.create(name.text!)
+        createButton.enabled = false
+        Game.shared.create(name.text!, completion: {
+            self.performSegueWithIdentifier("createQueue", sender: self)
+        })
     }
     
     @IBAction func joinGame(sender: AnyObject) {
-        Game.shared.join(joinCode.text!, name: joinName.text!)
+        joinButton.enabled = false
+        Game.shared.join(joinCode.text!, name: joinName.text!, completion: {
+            self.performSegueWithIdentifier("joinQueue", sender: self)
+        })
     }
 }

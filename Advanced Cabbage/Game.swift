@@ -38,7 +38,7 @@ class Game {
     
     // MARK: Create Game
     
-    func create(name: String) {
+    func create(name: String, completion: () -> Void) {
         Alamofire.request(APIRouter.CreateGame(name))
             .responseJSON { response in
                 // check if the response was successful
@@ -61,12 +61,15 @@ class Game {
                 self.id = id
                 self.numPlayers = numPlayers
                 self.players = players
+                
+                print("Saving game info")
+                completion()
         }
     }
     
     // MARK: Join Game
     
-    func join(code: String, name: String) {
+    func join(code: String, name: String, completion: () -> Void) {
         Alamofire.request(APIRouter.JoinGame(code, name))
             .responseJSON { response in
                 // check if the response was successful
@@ -89,6 +92,8 @@ class Game {
                 self.id = id
                 self.numPlayers = numPlayers
                 self.players = players
+                
+                completion()
         }
     }
 }

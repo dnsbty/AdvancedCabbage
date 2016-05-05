@@ -110,7 +110,6 @@
                                 <state key="normal" title="Create Game"/>
                                 <connections>
                                     <action selector="createGame:" destination="rOe-FA-e6z" eventType="touchUpInside" id="A1k-OX-0Tv"/>
-                                    <segue destination="edB-d6-1bT" kind="show" id="hfJ-le-Etu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvA-L6-vWK">
@@ -138,17 +137,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="createButton" destination="FBe-RS-p7z" id="ovV-6D-WGC"/>
                         <outlet property="name" destination="LTJ-1Z-wt2" id="OWd-Te-R5I"/>
+                        <segue destination="edB-d6-1bT" kind="show" identifier="createQueue" id="IMO-aS-PNT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNz-Cq-a7f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.5" y="76.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Queue View Controller-->
         <scene sceneID="U24-kZ-Ase">
             <objects>
-                <viewController id="edB-d6-1bT" sceneMemberID="viewController">
+                <viewController id="edB-d6-1bT" customClass="QueueViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vZF-2L-a78"/>
                         <viewControllerLayoutGuide type="bottom" id="BFs-AF-w6M"/>
@@ -188,6 +189,7 @@ Daniel</string>
                                 <rect key="frame" x="148" y="363" width="78" height="30"/>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
+                                    <action selector="startGame:" destination="edB-d6-1bT" eventType="touchUpInside" id="Ita-bq-VLV"/>
                                     <segue destination="nY2-wz-un5" kind="show" id="owm-cF-L2A"/>
                                 </connections>
                             </button>
@@ -195,6 +197,11 @@ Daniel</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="joinCode" destination="N7N-Wn-89m" id="Nak-ol-Myv"/>
+                        <outlet property="playerList" destination="wFu-0r-S4a" id="YiZ-yb-xVD"/>
+                        <outlet property="startButton" destination="ObS-F3-Afc" id="gqG-CF-36s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EyF-Sc-RCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,7 +348,6 @@ Daniel</string>
                                 <state key="normal" title="Join Game"/>
                                 <connections>
                                     <action selector="joinGame:" destination="nnk-fv-ZHM" eventType="touchUpInside" id="z8V-SH-emH"/>
-                                    <segue destination="edB-d6-1bT" kind="show" id="ba7-oJ-Blr"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is the game code?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLy-HO-Q55">
@@ -411,8 +417,10 @@ Daniel</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="joinButton" destination="CSx-Su-NDB" id="zbU-TH-L5z"/>
                         <outlet property="joinCode" destination="QWL-zN-ckO" id="6Jh-1p-ail"/>
                         <outlet property="joinName" destination="UwS-gn-JCf" id="1ff-It-ybz"/>
+                        <segue destination="edB-d6-1bT" kind="show" identifier="joinQueue" id="egL-zG-cnU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GT-ni-0mf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -421,7 +429,7 @@ Daniel</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ba7-oJ-Blr"/>
+        <segue reference="egL-zG-cnU"/>
         <segue reference="86f-pP-uQo"/>
         <segue reference="jrz-X8-agz"/>
     </inferredMetricsTieBreakers>
