@@ -96,9 +96,39 @@ class Game {
         }
     }
     
+    // MARK: Get player list
+    func getPlayers(completion: () -> Void) {
+        Alamofire.request(APIRouter.GetPlayers(self.id))
+            .responseJSON { response in
+                // check if the response was successful
+                guard response.result.isSuccess else {
+                    print("Error while retrieving player list: \(response.result.error)")
+                    return
+                }
+                
+                // make sure response types are as expected
+                guard let responseJSON = response.result.value as? [String: AnyObject],
+                    started = responseJSON["started"] as? Bool,
+                    players = responseJSON["players"] as? [AnyObject] else {
+                        print("Invalid information received when retrieving player list")
+                        return
+                }
+                
+                self.parsePlayerList(players)
+                self.numPlayers = self.players.count
+                self.started = started
+                
+                completion()
+        }
+    }
+    
+    // MARK: Helpers
     // MARK: Parse a list of players
     
     func parsePlayerList(list: [AnyObject]) {
+        
+        // clear the current player array
+        self.players.removeAll()
         
         // iterate through all players in the array
         for index in 0 ..< list.count {

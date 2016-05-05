@@ -190,7 +190,6 @@ Daniel</string>
                                 <state key="normal" title="Start Game"/>
                                 <connections>
                                     <action selector="startGame:" destination="edB-d6-1bT" eventType="touchUpInside" id="Ita-bq-VLV"/>
-                                    <segue destination="nY2-wz-un5" kind="show" id="owm-cF-L2A"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -201,6 +200,7 @@ Daniel</string>
                         <outlet property="joinCode" destination="N7N-Wn-89m" id="Nak-ol-Myv"/>
                         <outlet property="playerList" destination="wFu-0r-S4a" id="YiZ-yb-xVD"/>
                         <outlet property="startButton" destination="ObS-F3-Afc" id="gqG-CF-36s"/>
+                        <segue destination="nY2-wz-un5" kind="show" identifier="startGame" id="QAc-Lw-qxT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EyF-Sc-RCz" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,8 @@ import UIKit
 
 class QueueViewController : UIViewController {
     
+    var timer = NSTimer()
+    
     // MARK: Outlets
     
     @IBOutlet weak var joinCode: UILabel!
@@ -28,7 +30,27 @@ class QueueViewController : UIViewController {
         super.viewDidLoad()
         joinCode.text = Game.shared.code
         updatePlayerList()
+        timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: #selector(QueueViewController.checkPlayerUpdates), userInfo: nil, repeats: true)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        timer.invalidate()
+    }
+    
+    // MARK: Check for updates to player list
+    
+    func checkPlayerUpdates() {
+        print("Checking for updates")
+        Game.shared.getPlayers({
+            if Game.shared.started {
+                self.performSegueWithIdentifier("startGame", sender: self)
+            } else {
+                self.updatePlayerList()
+            }
+        })
+    }
+    
+    // MARK: Update the player list
     
     func updatePlayerList() {
         var list = ""
