@@ -19,9 +19,10 @@ class Game {
     var started = false
     var numPlayers = 0
     var players = [Player]()
-    var words = []
+    var words = [Word]()
     var playerID = 0
     var currentRound = 0
+    var currentWord : Word? = nil
     
     // MARK: Singleton
     
@@ -151,6 +152,26 @@ class Game {
         }
     }
     
+    // MARK: Submit word
+    func submitWord(word: String, completion: () -> Void) {
+        Alamofire.request(APIRouter.SubmitWord(self.id, self.playerID, word))
+            .responseJSON { response in
+                // check if the response was successful
+                guard response.result.isSuccess else {
+                    print("Error while submitting word: \(response.result.error)")
+                    return
+                }
+                
+                // make sure response types are as expected
+                guard let words = response.result.value as? [AnyObject] else {
+                    print("Invalid information received when submitting word")
+                    return
+                }
+                self.parseWordList(words)
+                completion()
+        }
+    }
+    
     // MARK: Helpers
     // MARK: Parse a list of players
     
@@ -174,5 +195,67 @@ class Game {
             // if so create a new player object, and append it to the array
             self.players.append(Player(id: id, creator: creator, name: name, number: number))
         }
+    }
+    
+    // MARK: Parse a list of words
+    
+    func parseWordList(list: [AnyObject]) {
+        
+        // clear the current word list
+        self.words.removeAll()
+        
+        // iterate through all words in the array
+        for index in 0 ..< list.count {
+            
+            // make sure the word has all the expected fields
+            guard let inUse = list[index]["inUse"] as? Bool,
+                word = list[index]["word"] as? String,
+                creator = list[index]["creator"] as? Int,
+                answerList = list[index]["answers"] as? [AnyObject] else {
+                    print("Invalid word information received")
+                    print(list[index])
+                    return
+            }
+            
+            // parse out the answers
+            if let answers = parseAnswerList(answerList) {
+                
+                // if so create a new word object, and append it to the array
+                self.words.append(Word(creator: creator, word: word, numAnswers: answers.count, answers: answers, created: created, inUse: inUse))
+            }
+        }
+    }
+    
+    // MARK: Parse a list of answers
+    
+    func parseAnswerList(list: [AnyObject]) -> [Answer]? {
+        var answers = [Answer]()
+        
+        // iterate through all answers in the list
+        for index in 0 ..< list.count {
+            
+            // make sure the answer has all the expected fields
+            guard let isDrawing = list[index]["isDrawing"] as? Bool,
+                creator = list[index]["creator"] as? Int else {
+                    print("Invalid answer information received")
+                    return nil
+            }
+            
+            // get the drawing filename or word depending on what the answer is
+            if (isDrawing) {
+                guard let drawingFilename = list[index]["drawingFilename"] as? String else {
+                    print("Invalid drawing filename received")
+                    return nil
+                }
+                answers.append(Answer(creator: creator, drawingFilename: drawingFilename))
+            } else {
+                guard let word = list[index]["word"] as? String else {
+                    print("Invalid answer word received")
+                    return nil
+                }
+                answers.append(Answer(creator: creator, word: word))
+            }
+        }
+        return answers
     }
 }

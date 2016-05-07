@@ -55,7 +55,6 @@ class QueueViewController : UIViewController {
     // MARK: Check for updates to player list
     
     func checkPlayerUpdates() {
-        print("Checking for updates")
         Game.shared.getPlayers({
             if Game.shared.started {
                 self.performSegueWithIdentifier("startGame", sender: self)

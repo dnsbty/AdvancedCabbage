@@ -20,6 +20,7 @@
 		95ADB0591CDAC13600AFB46B /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB0581CDAC13600AFB46B /* Word.swift */; };
 		95ADB05B1CDAC1E400AFB46B /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB05A1CDAC1E400AFB46B /* Answer.swift */; };
 		95ADB05D1CDADBD800AFB46B /* QueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB05C1CDADBD800AFB46B /* QueueViewController.swift */; };
+		95ADB05F1CDD219F00AFB46B /* FirstWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB05E1CDD219F00AFB46B /* FirstWordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		95ADB0581CDAC13600AFB46B /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		95ADB05A1CDAC1E400AFB46B /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		95ADB05C1CDADBD800AFB46B /* QueueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QueueViewController.swift; sourceTree = "<group>"; };
+		95ADB05E1CDD219F00AFB46B /* FirstWordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstWordViewController.swift; sourceTree = "<group>"; };
 		9A0FBBD087A543A0727E805F /* Pods_Advanced_Cabbage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Advanced_Cabbage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32335921EA3665F001343C0 /* Pods-Advanced Cabbage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advanced Cabbage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Advanced Cabbage/Pods-Advanced Cabbage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 				95ADB04D1CDA827800AFB46B /* NewGameViewController.swift */,
 				95ADB05C1CDADBD800AFB46B /* QueueViewController.swift */,
 				952D23FA1CCB012C007E0093 /* AppDelegate.swift */,
+				95ADB05E1CDD219F00AFB46B /* FirstWordViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				952D23FD1CCB012C007E0093 /* ViewController.swift in Sources */,
 				95ADB0591CDAC13600AFB46B /* Word.swift in Sources */,
 				95ADB0551CDABDA700AFB46B /* Game.swift in Sources */,
+				95ADB05F1CDD219F00AFB46B /* FirstWordViewController.swift in Sources */,
 				95ADB04E1CDA827800AFB46B /* NewGameViewController.swift in Sources */,
 				95ADB04C1CDA807100AFB46B /* APIRouter.swift in Sources */,
 				95ADB0571CDABF1000AFB46B /* Player.swift in Sources */,

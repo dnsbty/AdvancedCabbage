@@ -214,10 +214,10 @@ Daniel</string>
             </objects>
             <point key="canvasLocation" x="1766" y="396"/>
         </scene>
-        <!--View Controller-->
+        <!--First Word View Controller-->
         <scene sceneID="7Pm-6x-GDN">
             <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="nY2-wz-un5" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="nY2-wz-un5" customClass="FirstWordViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7la-tt-P57"/>
                         <viewControllerLayoutGuide type="bottom" id="nAE-xy-wU7"/>
@@ -240,12 +240,17 @@ Daniel</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMe-KV-YfZ">
                                 <rect key="frame" x="163" y="246" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitWord:" destination="nY2-wz-un5" eventType="touchUpInside" id="2Zk-OB-M65"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="submitButton" destination="kMe-KV-YfZ" id="HOw-Ld-1gz"/>
+                        <outlet property="word" destination="BjA-ob-QdK" id="OYH-9F-w7b"/>
                         <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="M9I-px-iwl"/>
                     </connections>
                 </viewController>
