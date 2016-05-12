@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -258,10 +258,10 @@ Daniel</string>
             </objects>
             <point key="canvasLocation" x="2321.5" y="395.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Drawing View Controller-->
         <scene sceneID="31i-n8-vpd">
             <objects>
-                <viewController id="wde-Fj-TJB" sceneMemberID="viewController">
+                <viewController id="wde-Fj-TJB" customClass="DrawingViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DoK-Vr-xTF"/>
                         <viewControllerLayoutGuide type="bottom" id="DOb-97-Wku"/>
@@ -283,14 +283,26 @@ Daniel</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEW-xz-T4R">
-                                <rect key="frame" x="163" y="617" width="49" height="30"/>
+                                <rect key="frame" x="163" y="624" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitDrawing:" destination="wde-Fj-TJB" eventType="touchUpInside" id="Wif-1i-KlC"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COy-qg-2Er">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="628-iv-pHP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="mainImageView" destination="628-iv-pHP" id="PtF-KA-fvY"/>
+                        <outlet property="submitButton" destination="HEW-xz-T4R" id="Pkg-Xf-gTC"/>
+                        <outlet property="tempImageView" destination="COy-qg-2Er" id="IPE-WB-fq5"/>
                         <segue destination="BMT-KN-1gY" kind="show" identifier="nextRound" id="9Yy-GB-vSj"/>
                     </connections>
                 </viewController>
