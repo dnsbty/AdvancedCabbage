@@ -310,10 +310,10 @@ Daniel</string>
             </objects>
             <point key="canvasLocation" x="2791.5" y="395.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Word Answer View Controller-->
         <scene sceneID="yKj-aS-f1R">
             <objects>
-                <viewController id="BMT-KN-1gY" sceneMemberID="viewController">
+                <viewController id="BMT-KN-1gY" customClass="WordAnswerViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tVi-Td-ZVU"/>
                         <viewControllerLayoutGuide type="bottom" id="ydW-H2-Q4J"/>
@@ -331,6 +331,9 @@ Daniel</string>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-HF-dM1">
                                 <rect key="frame" x="163" y="617" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitAnswer:" destination="BMT-KN-1gY" eventType="touchUpInside" id="mpC-mY-kuI"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvj-75-pm5">
                                 <rect key="frame" x="106" y="57" width="163" height="30"/>
@@ -342,6 +345,8 @@ Daniel</string>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="answerWord" destination="Mvj-75-pm5" id="6HL-lt-pH1"/>
+                        <outlet property="submitButton" destination="osc-HF-dM1" id="4jd-kM-c2r"/>
                         <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="RNN-Ff-QiR"/>
                     </connections>
                 </viewController>
@@ -455,6 +460,6 @@ Daniel</string>
     <inferredMetricsTieBreakers>
         <segue reference="egL-zG-cnU"/>
         <segue reference="86f-pP-uQo"/>
-        <segue reference="M9I-px-iwl"/>
+        <segue reference="RNN-Ff-QiR"/>
     </inferredMetricsTieBreakers>
 </document>
