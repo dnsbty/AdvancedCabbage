@@ -251,8 +251,8 @@ Daniel</string>
                     <connections>
                         <outlet property="submitButton" destination="kMe-KV-YfZ" id="HOw-Ld-1gz"/>
                         <outlet property="word" destination="BjA-ob-QdK" id="OYH-9F-w7b"/>
-                        <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="M9I-px-iwl"/>
                         <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="PtZ-C2-q0q"/>
+                        <segue destination="Imf-zV-rlI" kind="show" identifier="nextRound" id="wu6-3N-Ze0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiR-vN-3Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,13 +304,13 @@ Daniel</string>
                         <outlet property="mainImageView" destination="628-iv-pHP" id="PtF-KA-fvY"/>
                         <outlet property="submitButton" destination="HEW-xz-T4R" id="Pkg-Xf-gTC"/>
                         <outlet property="tempImageView" destination="COy-qg-2Er" id="IPE-WB-fq5"/>
-                        <segue destination="BMT-KN-1gY" kind="show" identifier="nextRound" id="9Yy-GB-vSj"/>
                         <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="nkw-u1-YYw"/>
+                        <segue destination="Imf-zV-rlI" kind="show" identifier="nextRound" id="pGz-hV-bpX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoU-CB-bml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2791.5" y="395.5"/>
+            <point key="canvasLocation" x="3529.5" y="163.5"/>
         </scene>
         <!--Word Answer View Controller-->
         <scene sceneID="yKj-aS-f1R">
@@ -330,18 +330,18 @@ Daniel</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-HF-dM1">
-                                <rect key="frame" x="163" y="617" width="49" height="30"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="submitAnswer:" destination="BMT-KN-1gY" eventType="touchUpInside" id="mpC-mY-kuI"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvj-75-pm5">
                                 <rect key="frame" x="106" y="57" width="163" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-HF-dM1">
+                                <rect key="frame" x="163" y="95" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitAnswer:" destination="BMT-KN-1gY" eventType="touchUpInside" id="mpC-mY-kuI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -349,13 +349,44 @@ Daniel</string>
                     <connections>
                         <outlet property="answerWord" destination="Mvj-75-pm5" id="6HL-lt-pH1"/>
                         <outlet property="submitButton" destination="osc-HF-dM1" id="4jd-kM-c2r"/>
-                        <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="RNN-Ff-QiR"/>
                         <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="j1g-Iz-VnW"/>
+                        <segue destination="Imf-zV-rlI" kind="show" identifier="nextRound" id="TRD-YS-LRH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fq7-hk-WTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3278.5" y="395.5"/>
+            <point key="canvasLocation" x="3529.5" y="943.5"/>
+        </scene>
+        <!--Answer View Controller-->
+        <scene sceneID="PJ9-Rb-CBi">
+            <objects>
+                <viewController id="Imf-zV-rlI" customClass="AnswerViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dVm-gO-dPk"/>
+                        <viewControllerLayoutGuide type="bottom" id="OdO-cH-tuj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V43-eA-hq5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MX-hH-Fp6">
+                                <rect key="frame" x="151" y="105" width="72" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="wde-Fj-TJB" kind="showDetail" identifier="toDrawing" action="showViewController:sender:" id="cT0-p6-PGY"/>
+                        <segue destination="BMT-KN-1gY" kind="showDetail" identifier="toWord" action="showViewController:sender:" id="hop-Mq-9hZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zeQ-8e-RTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2923.5" y="395.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OsT-PT-pBH">
@@ -389,7 +420,7 @@ Daniel</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cuz-kG-rTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042" y="1190"/>
+            <point key="canvasLocation" x="4237.5" y="579.5"/>
         </scene>
         <!--New Game View Controller-->
         <scene sceneID="SWe-BB-Amd">
@@ -497,7 +528,7 @@ Daniel</string>
     <inferredMetricsTieBreakers>
         <segue reference="egL-zG-cnU"/>
         <segue reference="n1n-8Z-fo9"/>
-        <segue reference="PtZ-C2-q0q"/>
-        <segue reference="M9I-px-iwl"/>
+        <segue reference="j1g-Iz-VnW"/>
+        <segue reference="TRD-YS-LRH"/>
     </inferredMetricsTieBreakers>
 </document>

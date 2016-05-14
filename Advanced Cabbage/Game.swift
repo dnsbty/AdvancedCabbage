@@ -167,15 +167,41 @@ class Game {
                     print("Invalid information received when submitting word")
                     return
                 }
+                
                 self.parseWordList(words)
                 completion()
+        }
+    }
+    
+    // MARK: Get next word
+    func getNextWord(completion: (word: Word) -> Void) {
+        let wordID = (Game.shared.playerID + Game.shared.currentRound) % Game.shared.numPlayers
+        Alamofire.request(APIRouter.GetWord(self.id, wordID))
+            .responseJSON { response in
+                // check if the response was successful
+                guard response.result.isSuccess else {
+                    print("Error while submitting word: \(response.result.error)")
+                    return
+                }
+                
+                // make sure response types are as expected
+                guard let wordData = response.result.value as? [String: AnyObject] else {
+                    print("Invalid information received when getting word")
+                    return
+                }
+                
+                // parse the word object and save it into the array
+                if let word = self.parseWord(wordData) {
+                    self.words[wordID] = word
+                    completion(word: word)
+                }
         }
     }
     
     // MARK: Helpers
     // MARK: Parse a list of players
     
-    func parsePlayerList(list: [AnyObject]) {
+    private func parsePlayerList(list: [AnyObject]) {
         
         // clear the current player array
         self.players.removeAll()
@@ -199,7 +225,7 @@ class Game {
     
     // MARK: Parse a list of words
     
-    func parseWordList(list: [AnyObject]) {
+    private func parseWordList(list: [AnyObject]) {
         
         // clear the current word list
         self.words.removeAll()
@@ -207,28 +233,41 @@ class Game {
         // iterate through all words in the array
         for index in 0 ..< list.count {
             
-            // make sure the word has all the expected fields
-            guard let inUse = list[index]["inUse"] as? Bool,
-                word = list[index]["word"] as? String,
-                creator = list[index]["creator"] as? Int,
-                answerList = list[index]["answers"] as? [AnyObject] else {
-                    print("Invalid word information received")
-                    print(list[index])
-                    return
+            // convert the untyped object to a dictionary
+            guard let word = list[index] as? [String: AnyObject] else {
+                print("Invalid word list received")
+                return
             }
             
-            // parse out the answers
-            if let answers = parseAnswerList(answerList) {
-                
-                // if so create a new word object, and append it to the array
-                self.words.append(Word(creator: creator, word: word, numAnswers: answers.count, answers: answers, created: created, inUse: inUse))
+            // parse the word and append it to the array
+            if let parsed = parseWord(word) {
+                self.words.append(parsed)
             }
         }
     }
     
+    // MARK: Parse a single word
+    
+    private func parseWord(wordObject: [String: AnyObject]) -> Word? {
+        guard let inUse = wordObject["inUse"] as? Bool,
+            word = wordObject["word"] as? String,
+            creator = wordObject["creator"] as? Int,
+            answerList = wordObject["answers"] as? [AnyObject] else {
+                print("Invalid word information received: \(wordObject)")
+                return nil
+        }
+        
+        // parse out the answers
+        if let answers = parseAnswerList(answerList) {
+            return Word(creator: creator, word: word, numAnswers: answers.count, answers: answers, created: created, inUse: inUse)
+        }
+        
+        return nil
+    }
+    
     // MARK: Parse a list of answers
     
-    func parseAnswerList(list: [AnyObject]) -> [Answer]? {
+    private func parseAnswerList(list: [AnyObject]) -> [Answer]? {
         var answers = [Answer]()
         
         // iterate through all answers in the list
