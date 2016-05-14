@@ -92,12 +92,16 @@ class DrawingViewController : UIViewController {
         mainImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: mainImageView.frame.size.width, height: mainImageView.frame.size.height))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        Game.shared.currentRound += 1
         
-        if Game.shared.currentRound == Game.shared.numPlayers {
-            self.performSegueWithIdentifier("gameOver", sender: self)
-        } else {
-            self.performSegueWithIdentifier("nextRound", sender: self)
-        }
+        // Convert image to jpg and upload to the server
+        Game.shared.submitDrawing(image, completion: {
+            Game.shared.currentRound += 1
+            
+            if Game.shared.currentRound == Game.shared.numPlayers {
+                self.performSegueWithIdentifier("gameOver", sender: self)
+            } else {
+                self.performSegueWithIdentifier("nextRound", sender: self)
+            }
+        })
     }
 }

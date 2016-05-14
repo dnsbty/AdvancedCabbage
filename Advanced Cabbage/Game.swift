@@ -198,6 +198,41 @@ class Game {
         }
     }
     
+    // MARK: Submit answers
+    // MARK: Submit drawing
+    
+    func submitDrawing(imageData: UIImage, completion: () -> Void) {
+        guard let image = UIImageJPEGRepresentation(imageData, 0.5) else {
+            print("Could not get JPEG representation of UIImage")
+            return
+        }
+        let wordID = (Game.shared.playerID + Game.shared.currentRound) % Game.shared.numPlayers
+        
+        Alamofire.upload(
+            APIRouter.SubmitAnswerDrawing(self.id, wordID),
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(data: image, name: "drawing", fileName: "image.jpg", mimeType: "image/jpeg")
+                multipartFormData.appendBodyPart(data: String(self.playerID).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"player")
+            },
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.validate()
+                    upload.responseJSON { response in
+                        guard response.result.isSuccess else {
+                            print("Error while uploading file: \(response.result.error)")
+                            return
+                        }
+                        
+                        completion()
+                    }
+                case .Failure(let encodingError):
+                    print("Encoding error: \(encodingError)")
+                }
+            }
+        )
+    }
+    
     // MARK: Helpers
     // MARK: Parse a list of players
     
