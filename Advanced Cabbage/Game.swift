@@ -263,6 +263,16 @@ class Game {
         )
     }
     
+    // MARK: Get a drawing
+    
+    func getDrawing(drawingFile: String, completion: (image: UIImage) -> Void) {
+        Alamofire.request(APIRouter.GetDrawing(self.id, drawingFile))
+            .response(queue: nil, completionHandler: { (request, response, data, error) in
+                let image = UIImage(data: data!, scale:1)
+                completion(image: image!)
+            })
+    }
+    
     // MARK: Helpers
     // MARK: Parse a list of players
     

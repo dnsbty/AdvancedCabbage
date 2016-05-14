@@ -336,6 +336,9 @@ Daniel</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pxf-ig-r6e">
+                                <rect key="frame" x="20" y="125" width="335" height="522"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-HF-dM1">
                                 <rect key="frame" x="163" y="95" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
@@ -349,6 +352,7 @@ Daniel</string>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="answerWord" destination="Mvj-75-pm5" id="6HL-lt-pH1"/>
+                        <outlet property="imageView" destination="Pxf-ig-r6e" id="ZyC-BI-dgt"/>
                         <outlet property="submitButton" destination="osc-HF-dM1" id="4jd-kM-c2r"/>
                         <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="j1g-Iz-VnW"/>
                         <segue destination="Imf-zV-rlI" kind="show" identifier="nextRound" id="TRD-YS-LRH"/>
@@ -528,8 +532,8 @@ Daniel</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="n1n-8Z-fo9"/>
-        <segue reference="nkw-u1-YYw"/>
-        <segue reference="pGz-hV-bpX"/>
+        <segue reference="j1g-Iz-VnW"/>
+        <segue reference="TRD-YS-LRH"/>
         <segue reference="egL-zG-cnU"/>
     </inferredMetricsTieBreakers>
 </document>

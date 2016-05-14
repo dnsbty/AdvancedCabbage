@@ -97,7 +97,7 @@ class DrawingViewController : UIViewController {
         Game.shared.submitDrawing(image, completion: {
             Game.shared.currentRound += 1
             
-            if Game.shared.currentRound == Game.shared.numPlayers {
+            if Game.shared.currentRound == Game.shared.numPlayers + 20 {
                 self.performSegueWithIdentifier("gameOver", sender: self)
             } else {
                 self.performSegueWithIdentifier("nextRound", sender: self)
