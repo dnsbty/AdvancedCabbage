@@ -9,14 +9,24 @@
 import UIKit
 
 class DrawingViewController : UIViewController {
+    
+    var word : Word?
+    var wordID : Int?
+    
     @IBOutlet weak var tempImageView: UIImageView!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var wordLabel: UILabel!
     
     var lastPoint = CGPoint.zero
     let brushWidth : CGFloat = 5.0
     let opacity : CGFloat = 1.0
     var swiped = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        wordLabel.text = word?.word
+    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         swiped = false

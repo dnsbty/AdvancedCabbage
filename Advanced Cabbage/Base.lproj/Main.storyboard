@@ -277,8 +277,8 @@ Daniel</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dennis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSj-6J-JpV">
-                                <rect key="frame" x="161" y="57" width="53" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dennis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSj-6J-JpV">
+                                <rect key="frame" x="20" y="57" width="335" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -304,6 +304,7 @@ Daniel</string>
                         <outlet property="mainImageView" destination="628-iv-pHP" id="PtF-KA-fvY"/>
                         <outlet property="submitButton" destination="HEW-xz-T4R" id="Pkg-Xf-gTC"/>
                         <outlet property="tempImageView" destination="COy-qg-2Er" id="IPE-WB-fq5"/>
+                        <outlet property="wordLabel" destination="LSj-6J-JpV" id="Uah-xm-dYK"/>
                         <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="nkw-u1-YYw"/>
                         <segue destination="Imf-zV-rlI" kind="show" identifier="nextRound" id="pGz-hV-bpX"/>
                     </connections>
@@ -526,9 +527,9 @@ Daniel</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="egL-zG-cnU"/>
         <segue reference="n1n-8Z-fo9"/>
-        <segue reference="j1g-Iz-VnW"/>
-        <segue reference="TRD-YS-LRH"/>
+        <segue reference="nkw-u1-YYw"/>
+        <segue reference="pGz-hV-bpX"/>
+        <segue reference="egL-zG-cnU"/>
     </inferredMetricsTieBreakers>
 </document>
