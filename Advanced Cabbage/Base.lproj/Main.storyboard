@@ -252,6 +252,7 @@ Daniel</string>
                         <outlet property="submitButton" destination="kMe-KV-YfZ" id="HOw-Ld-1gz"/>
                         <outlet property="word" destination="BjA-ob-QdK" id="OYH-9F-w7b"/>
                         <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="M9I-px-iwl"/>
+                        <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="PtZ-C2-q0q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiR-vN-3Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -304,6 +305,7 @@ Daniel</string>
                         <outlet property="submitButton" destination="HEW-xz-T4R" id="Pkg-Xf-gTC"/>
                         <outlet property="tempImageView" destination="COy-qg-2Er" id="IPE-WB-fq5"/>
                         <segue destination="BMT-KN-1gY" kind="show" identifier="nextRound" id="9Yy-GB-vSj"/>
+                        <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="nkw-u1-YYw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SoU-CB-bml" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -348,11 +350,46 @@ Daniel</string>
                         <outlet property="answerWord" destination="Mvj-75-pm5" id="6HL-lt-pH1"/>
                         <outlet property="submitButton" destination="osc-HF-dM1" id="4jd-kM-c2r"/>
                         <segue destination="wde-Fj-TJB" kind="show" identifier="nextRound" id="RNN-Ff-QiR"/>
+                        <segue destination="fDj-6D-VPj" kind="show" identifier="gameOver" id="j1g-Iz-VnW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fq7-hk-WTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3278.5" y="395.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OsT-PT-pBH">
+            <objects>
+                <viewController id="fDj-6D-VPj" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rrN-k2-cIl"/>
+                        <viewControllerLayoutGuide type="bottom" id="WyV-6i-Lgr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uTN-bJ-6Qr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gx7-q6-Wgo">
+                                <rect key="frame" x="144" y="132" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TK1-0y-4Aw">
+                                <rect key="frame" x="148" y="240" width="79" height="30"/>
+                                <state key="normal" title="Play Again?"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="" id="n1n-8Z-fo9"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cuz-kG-rTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3042" y="1190"/>
         </scene>
         <!--New Game View Controller-->
         <scene sceneID="SWe-BB-Amd">
@@ -459,7 +496,8 @@ Daniel</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="egL-zG-cnU"/>
-        <segue reference="86f-pP-uQo"/>
-        <segue reference="RNN-Ff-QiR"/>
+        <segue reference="n1n-8Z-fo9"/>
+        <segue reference="PtZ-C2-q0q"/>
+        <segue reference="M9I-px-iwl"/>
     </inferredMetricsTieBreakers>
 </document>

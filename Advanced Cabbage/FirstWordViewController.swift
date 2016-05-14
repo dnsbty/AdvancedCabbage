@@ -19,7 +19,12 @@ class FirstWordViewController : UIViewController {
     
     @IBAction func submitWord(sender: AnyObject) {
         Game.shared.submitWord(word.text!, completion: {
-            self.performSegueWithIdentifier("nextRound", sender: self)
+            Game.shared.currentRound += 1
+            if Game.shared.currentRound == Game.shared.numPlayers {
+                self.performSegueWithIdentifier("gameOver", sender: self)
+            } else {
+                self.performSegueWithIdentifier("nextRound", sender: self)
+            }
         })
     }
 }

@@ -13,6 +13,13 @@ class WordAnswerViewController : UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     
     @IBAction func submitAnswer(sender: AnyObject) {
-        self.performSegueWithIdentifier("nextRound", sender: self)
+        submitButton.enabled = false
+        Game.shared.currentRound += 1
+        
+        if Game.shared.currentRound == Game.shared.numPlayers {
+            self.performSegueWithIdentifier("gameOver", sender: self)
+        } else {
+            self.performSegueWithIdentifier("nextRound", sender: self)
+        }
     }
 }

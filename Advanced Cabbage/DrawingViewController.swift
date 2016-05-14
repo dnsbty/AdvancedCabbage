@@ -76,12 +76,18 @@ class DrawingViewController : UIViewController {
     }
     
     @IBAction func submitDrawing(sender: AnyObject) {
+        submitButton.enabled = false
         // Create a UIImage from the drawing
         UIGraphicsBeginImageContext(mainImageView.frame.size)
         mainImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: mainImageView.frame.size.width, height: mainImageView.frame.size.height))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        Game.shared.currentRound += 1
         
-        self.performSegueWithIdentifier("nextRound", sender: self)
+        if Game.shared.currentRound == Game.shared.numPlayers {
+            self.performSegueWithIdentifier("gameOver", sender: self)
+        } else {
+            self.performSegueWithIdentifier("nextRound", sender: self)
+        }
     }
 }
