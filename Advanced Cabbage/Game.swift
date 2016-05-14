@@ -209,7 +209,7 @@ class Game {
         let wordID = (Game.shared.playerID + Game.shared.currentRound) % Game.shared.numPlayers
         
         Alamofire.upload(
-            APIRouter.SubmitAnswerDrawing(self.id, wordID),
+            APIRouter.SubmitAnswer(self.id, wordID),
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(data: image, name: "drawing", fileName: "image.jpg", mimeType: "image/jpeg")
                 multipartFormData.appendBodyPart(data: String(self.playerID).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"player")
@@ -221,6 +221,36 @@ class Game {
                     upload.responseJSON { response in
                         guard response.result.isSuccess else {
                             print("Error while uploading file: \(response.result.error)")
+                            return
+                        }
+                        
+                        completion()
+                    }
+                case .Failure(let encodingError):
+                    print("Encoding error: \(encodingError)")
+                }
+            }
+        )
+    }
+    
+    // MARK: Submit word answer
+    
+    func submitAnswer(word: String, completion: () -> Void) {
+        let wordID = (Game.shared.playerID + Game.shared.currentRound) % Game.shared.numPlayers
+        
+        Alamofire.upload(
+            APIRouter.SubmitAnswer(self.id, wordID),
+            multipartFormData: { multipartFormData in
+                multipartFormData.appendBodyPart(data: word.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name: "word")
+                multipartFormData.appendBodyPart(data: String(self.playerID).dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!, name :"player")
+            },
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .Success(let upload, _, _):
+                    upload.validate()
+                    upload.responseJSON { response in
+                        guard response.result.isSuccess else {
+                            print("Error while submitting word answer: \(response.result.error)")
                             return
                         }
                         

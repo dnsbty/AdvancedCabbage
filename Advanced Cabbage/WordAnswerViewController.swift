@@ -14,12 +14,14 @@ class WordAnswerViewController : UIViewController {
     
     @IBAction func submitAnswer(sender: AnyObject) {
         submitButton.enabled = false
-        Game.shared.currentRound += 1
-        
-        if Game.shared.currentRound == Game.shared.numPlayers {
-            self.performSegueWithIdentifier("gameOver", sender: self)
-        } else {
-            self.performSegueWithIdentifier("nextRound", sender: self)
-        }
+        Game.shared.submitAnswer(answerWord.text!, completion: {
+            Game.shared.currentRound += 1
+            
+            if Game.shared.currentRound == Game.shared.numPlayers {
+                self.performSegueWithIdentifier("gameOver", sender: self)
+            } else {
+                self.performSegueWithIdentifier("nextRound", sender: self)
+            }
+        })
     }
 }
