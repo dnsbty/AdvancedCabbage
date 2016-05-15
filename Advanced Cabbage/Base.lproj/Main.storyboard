@@ -447,7 +447,7 @@ Daniel</string>
         <!--Result View Controller-->
         <scene sceneID="eHH-Cp-fbI">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="b8r-Al-5Hc" customClass="ResultViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="b8r-Al-5Hc" customClass="ResultViewController" customModule="Advanced_Cabbage" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQm-Ej-btz" userLabel="First Responder" sceneMemberID="firstResponder"/>
