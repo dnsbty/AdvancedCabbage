@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class NewGameViewController : UIViewController {
+class NewGameViewController : UIViewController, UITextFieldDelegate {
     
     var type: String?
     
@@ -27,9 +27,12 @@ class NewGameViewController : UIViewController {
         let userName = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String
         if type == "create" {
             name.text = userName
+            name.delegate = self
             name.becomeFirstResponder()
         } else {
             joinName.text = userName
+            joinName.delegate = self
+            joinCode.delegate = self
             if userName != nil {
                 joinCode.becomeFirstResponder()
             } else {
@@ -54,5 +57,25 @@ class NewGameViewController : UIViewController {
             self.performSegueWithIdentifier("joinQueue", sender: self)
         })
         NSUserDefaults.standardUserDefaults().setObject(joinName.text!, forKey: "name")
+    }
+    
+    // MARK: Text Field Delegate Functions
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        switch textField.tag {
+        case 1: // create game name
+            createGame(self)
+            break
+        case 2: // join game name
+            joinCode.becomeFirstResponder()
+            break
+        case 3: // join game code
+            joinGame(self)
+            break
+        default:
+            return false
+        }
+        return true
     }
 }
