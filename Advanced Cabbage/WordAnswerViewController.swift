@@ -21,7 +21,7 @@ class WordAnswerViewController : UIViewController {
         Game.shared.submitAnswer(answerWord.text!, completion: {
             Game.shared.currentRound += 1
             
-            if Game.shared.currentRound == Game.shared.numPlayers - 1 {
+            if Game.shared.currentRound == Game.shared.numPlayers {
                 self.performSegueWithIdentifier("gameOver", sender: self)
             } else {
                 self.performSegueWithIdentifier("nextRound", sender: self)
