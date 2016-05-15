@@ -176,7 +176,14 @@ class Game {
     // MARK: Get next word
     func getNextWord(completion: (word: Word, id: Int) -> Void) {
         let wordID = (Game.shared.playerID + Game.shared.currentRound) % Game.shared.numPlayers
-        Alamofire.request(APIRouter.GetWord(self.id, wordID))
+        getWord(wordID, completion: { word in
+            completion(word: word, id: wordID)
+        })
+    }
+    
+    // MARK: Get word
+    func getWord(id: Int, completion: (word: Word) -> Void) {
+        Alamofire.request(APIRouter.GetWord(self.id, id))
             .responseJSON { response in
                 // check if the response was successful
                 guard response.result.isSuccess else {
@@ -192,8 +199,8 @@ class Game {
                 
                 // parse the word object and save it into the array
                 if let word = self.parseWord(wordData) {
-                    self.words[wordID] = word
-                    completion(word: word, id: wordID)
+                    self.words[id] = word
+                    completion(word: word)
                 }
         }
     }
@@ -399,5 +406,26 @@ class Game {
             }
         }
         return answers
+    }
+    
+    // MARK: Generate a list of result cards from a word and its answers
+    
+    func generateResultCards(wordIndex : Int, completion: (results: [ResultCard]) -> Void) {
+        var results = [ResultCard]()
+        Game.shared.getWord(wordIndex, completion: { word in
+            let card = ResultCard(word: word.word, drawingFilename: nil)
+            results.append(card)
+            
+            // iterate through all the answers in the list
+            for index in 0 ..< word.answers.count {
+                if word.answers[index].isDrawing {
+                    results.append(ResultCard(word: nil, drawingFilename: word.answers[index].drawingFilename))
+                } else {
+                    results.append(ResultCard(word: word.answers[index].word, drawingFilename: nil))
+                }
+            }
+            
+            completion(results: results)
+        })
     }
 }
