@@ -11,6 +11,8 @@ import Alamofire
 
 class NewGameViewController : UIViewController {
     
+    var type: String?
+    
     // MARK: Outlets
     
     @IBOutlet weak var name: UITextField!
@@ -19,6 +21,15 @@ class NewGameViewController : UIViewController {
     @IBOutlet weak var joinName: UITextField!
     @IBOutlet weak var joinCode: UITextField!
     @IBOutlet weak var joinButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if type == "create" {
+            name.becomeFirstResponder()
+        } else {
+            joinName.becomeFirstResponder()
+        }
+    }
     
     // MARK: Actions
     

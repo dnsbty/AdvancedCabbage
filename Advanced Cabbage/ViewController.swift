@@ -7,20 +7,17 @@
 //
 
 import UIKit
-import Alamofire
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destinationVC = segue.destinationViewController as! NewGameViewController
+        if segue.identifier == "createGame" {
+            destinationVC.type = "create"
+        } else {
+            destinationVC.type = "join"
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

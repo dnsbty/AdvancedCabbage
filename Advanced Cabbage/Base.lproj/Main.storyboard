@@ -36,7 +36,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Create Game"/>
                                 <connections>
-                                    <segue destination="rOe-FA-e6z" kind="show" id="4lk-Ps-dkd"/>
+                                    <segue destination="rOe-FA-e6z" kind="show" identifier="createGame" id="4lk-Ps-dkd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmg-LU-teR">
@@ -48,7 +48,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Join Game"/>
                                 <connections>
-                                    <segue destination="nnk-fv-ZHM" kind="show" id="ASg-hr-7Tw"/>
+                                    <segue destination="nnk-fv-ZHM" kind="show" identifier="joinGame" id="ASg-hr-7Tw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -91,14 +91,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-1Z-wt2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="LTJ-1Z-wt2">
                                 <rect key="frame" x="80" y="90" width="215" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5kF-h5-ZAh"/>
                                     <constraint firstAttribute="width" constant="215" id="BHa-v4-dMY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBe-RS-p7z">
                                 <rect key="frame" x="114" y="139" width="146" height="29"/>
@@ -462,14 +462,14 @@ Daniel</string>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-gn-JCf">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-gn-JCf">
                                 <rect key="frame" x="79" y="78" width="217" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="IoI-Di-2gK"/>
                                     <constraint firstAttribute="width" constant="217" id="WGs-Hm-4La"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="QWL-zN-ckO">
                                 <rect key="frame" x="79" y="168" width="217" height="30"/>
@@ -478,7 +478,7 @@ Daniel</string>
                                     <constraint firstAttribute="width" constant="217" id="BaZ-Xy-TBO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWz-uw-umQ">
                                 <rect key="frame" x="79" y="42" width="217" height="28"/>
@@ -531,9 +531,9 @@ Daniel</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n1n-8Z-fo9"/>
-        <segue reference="j1g-Iz-VnW"/>
+        <segue reference="bUo-4B-Ixm"/>
+        <segue reference="IMO-aS-PNT"/>
         <segue reference="TRD-YS-LRH"/>
-        <segue reference="egL-zG-cnU"/>
+        <segue reference="j1g-Iz-VnW"/>
     </inferredMetricsTieBreakers>
 </document>
