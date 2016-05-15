@@ -25,7 +25,11 @@ class DrawingViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wordLabel.text = word?.word
+        if word?.numAnswers > 0 {
+            wordLabel.text = word?.answers.last?.word
+        } else {
+            wordLabel.text = word?.word
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
