@@ -16,6 +16,10 @@ class CardViewController : UIViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBAction func closeResults(sender: AnyObject) {
+        self.performSegueWithIdentifier("closeResults", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (result?.word == nil) {

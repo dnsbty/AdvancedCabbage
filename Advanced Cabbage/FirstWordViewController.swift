@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstWordViewController : UIViewController {
+class FirstWordViewController : UIViewController, UITextFieldDelegate {
     
     // MARK: Outlets
     
@@ -26,5 +26,18 @@ class FirstWordViewController : UIViewController {
                 self.performSegueWithIdentifier("nextRound", sender: self)
             }
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        word.delegate = self
+    }
+    
+    // MARK: Text Field Delegate Functions
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        submitWord(self)
+        return true
     }
 }

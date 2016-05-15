@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WordAnswerViewController : UIViewController {
+class WordAnswerViewController : UIViewController, UITextFieldDelegate {
     
     var image: UIImage?
     
@@ -32,5 +32,14 @@ class WordAnswerViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = self.image
+        answerWord.delegate = self
+    }
+    
+    // MARK: Text Field Delegate Functions
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        submitAnswer(self)
+        return true
     }
 }

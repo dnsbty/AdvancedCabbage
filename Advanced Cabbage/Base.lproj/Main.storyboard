@@ -98,7 +98,7 @@
                                     <constraint firstAttribute="width" constant="215" id="BHa-v4-dMY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="go"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FBe-RS-p7z">
                                 <rect key="frame" x="114" y="139" width="146" height="29"/>
@@ -235,7 +235,7 @@ Daniel</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BjA-ob-QdK">
                                 <rect key="frame" x="97" y="140" width="181" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMe-KV-YfZ">
                                 <rect key="frame" x="163" y="246" width="49" height="30"/>
@@ -334,7 +334,7 @@ Daniel</string>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mvj-75-pm5">
                                 <rect key="frame" x="106" y="57" width="163" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pxf-ig-r6e">
                                 <rect key="frame" x="20" y="125" width="335" height="522"/>
@@ -475,6 +475,13 @@ Daniel</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqs-Ea-auY">
+                                <rect key="frame" x="20" y="20" width="30" height="30"/>
+                                <state key="normal" title="X"/>
+                                <connections>
+                                    <action selector="closeResults:" destination="ruQ-ay-xEJ" eventType="touchUpInside" id="aea-IN-2gd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -482,6 +489,7 @@ Daniel</string>
                     <connections>
                         <outlet property="imageView" destination="fUU-ia-2yb" id="9hP-ND-RT3"/>
                         <outlet property="label" destination="v4R-o9-uzr" id="vOk-ah-9kC"/>
+                        <segue destination="fDj-6D-VPj" kind="show" identifier="closeResults" id="4nw-Ge-uua"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3D-Vk-oqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -530,7 +538,7 @@ Daniel</string>
                                     <constraint firstAttribute="width" constant="217" id="WGs-Hm-4La"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="QWL-zN-ckO">
                                 <rect key="frame" x="79" y="168" width="217" height="30"/>
@@ -539,7 +547,7 @@ Daniel</string>
                                     <constraint firstAttribute="width" constant="217" id="BaZ-Xy-TBO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="go"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is your name?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWz-uw-umQ">
                                 <rect key="frame" x="79" y="42" width="217" height="28"/>
@@ -592,9 +600,9 @@ Daniel</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="n1n-8Z-fo9"/>
-        <segue reference="j1g-Iz-VnW"/>
-        <segue reference="TRD-YS-LRH"/>
+        <segue reference="86f-pP-uQo"/>
         <segue reference="egL-zG-cnU"/>
+        <segue reference="TRD-YS-LRH"/>
+        <segue reference="4nw-Ge-uua"/>
     </inferredMetricsTieBreakers>
 </document>
