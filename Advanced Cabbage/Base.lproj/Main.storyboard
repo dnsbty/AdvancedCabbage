@@ -380,11 +380,18 @@ Daniel</string>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tell the other guy to hurry up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGc-qz-JLi">
+                                <rect key="frame" x="20" y="529" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.73471038509999997" green="0.73471038509999997" blue="0.73471038509999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="hurryLabel" destination="qGc-qz-JLi" id="m1w-YN-F2L"/>
                         <segue destination="wde-Fj-TJB" kind="showDetail" identifier="toDrawing" action="showViewController:sender:" id="cT0-p6-PGY"/>
                         <segue destination="BMT-KN-1gY" kind="showDetail" identifier="toWord" action="showViewController:sender:" id="hop-Mq-9hZ"/>
                     </connections>

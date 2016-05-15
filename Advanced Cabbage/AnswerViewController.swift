@@ -14,6 +14,8 @@ class AnswerViewController : UIViewController {
     var word : Word?
     var image : UIImage?
     
+    @IBOutlet weak var hurryLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Game.shared.getNextWord({ (word, wordID) in
@@ -22,6 +24,8 @@ class AnswerViewController : UIViewController {
                 
                 // if the word is in use, set up the timer to check again every 2.5 seconds
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: #selector(self.checkNextWord), userInfo: nil, repeats: true)
+                let playerUsing = (Game.shared.playerID + 1) % Game.shared.numPlayers
+                self.hurryLabel.text = "Tell \(Game.shared.players[playerUsing].name) to hurry up"
             } else {
                 Game.shared.claimWord(wordID, completion: { claimed in
                     if Game.shared.currentRound % 2 == 1 {
