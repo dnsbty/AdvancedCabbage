@@ -18,6 +18,7 @@ public enum APIRouter: URLRequestConvertible {
     case StartGame(String)
     case SubmitWord(String, Int, String)
     case GetWord(String, Int)
+    case ClaimWord(String, Int)
     case SubmitAnswer(String, Int)
     case GetDrawing(String, String)
     
@@ -38,6 +39,8 @@ public enum APIRouter: URLRequestConvertible {
                 return("/games/\(id)/words", .POST, ["creator": player, "word": word])
             case .GetWord(let id, let wordID):
                 return("/games/\(id)/words/\(wordID)", .GET, nil)
+            case .ClaimWord(let id, let wordID):
+                return("/games/\(id)/words/\(wordID)/claim", .POST, nil)
             case .SubmitAnswer(let id, let wordID):
                 return("/games/\(id)/words/\(wordID)/answers", .POST, nil)
             case .GetDrawing(let id, let drawingFile):

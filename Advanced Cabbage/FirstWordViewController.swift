@@ -20,7 +20,7 @@ class FirstWordViewController : UIViewController {
     @IBAction func submitWord(sender: AnyObject) {
         Game.shared.submitWord(word.text!, completion: {
             Game.shared.currentRound += 1
-            if Game.shared.currentRound == Game.shared.numPlayers {
+            if Game.shared.currentRound == Game.shared.numPlayers - 1 {
                 self.performSegueWithIdentifier("gameOver", sender: self)
             } else {
                 self.performSegueWithIdentifier("nextRound", sender: self)

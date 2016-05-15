@@ -9,6 +9,9 @@
 import UIKit
 
 class WordAnswerViewController : UIViewController {
+    
+    var image: UIImage?
+    
     @IBOutlet weak var answerWord: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
@@ -18,11 +21,16 @@ class WordAnswerViewController : UIViewController {
         Game.shared.submitAnswer(answerWord.text!, completion: {
             Game.shared.currentRound += 1
             
-            if Game.shared.currentRound == Game.shared.numPlayers + 20 {
+            if Game.shared.currentRound == Game.shared.numPlayers - 1 {
                 self.performSegueWithIdentifier("gameOver", sender: self)
             } else {
                 self.performSegueWithIdentifier("nextRound", sender: self)
             }
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView.image = self.image
     }
 }

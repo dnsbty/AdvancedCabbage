@@ -174,7 +174,7 @@ class Game {
     }
     
     // MARK: Get next word
-    func getNextWord(completion: (word: Word) -> Void) {
+    func getNextWord(completion: (word: Word, id: Int) -> Void) {
         let wordID = (Game.shared.playerID + Game.shared.currentRound) % Game.shared.numPlayers
         Alamofire.request(APIRouter.GetWord(self.id, wordID))
             .responseJSON { response in
@@ -193,6 +193,31 @@ class Game {
                 // parse the word object and save it into the array
                 if let word = self.parseWord(wordData) {
                     self.words[wordID] = word
+                    completion(word: word, id: wordID)
+                }
+        }
+    }
+    
+    // MARK: Claim word
+    
+    func claimWord(id: Int, completion: (word: Word) -> Void) {
+        Alamofire.request(APIRouter.ClaimWord(self.id, id))
+            .responseJSON { response in
+                // check if the response was successful
+                guard response.result.isSuccess else {
+                    print("Error when claiming word: \(response.result.error)")
+                    return
+                }
+                
+                // make sure response types are as expected
+                guard let wordData = response.result.value as? [String: AnyObject] else {
+                    print("Invalid information received when claiming word")
+                    return
+                }
+                
+                // parse the word object and save it into the array
+                if let word = self.parseWord(wordData) {
+                    self.words[id] = word
                     completion(word: word)
                 }
         }
@@ -268,8 +293,11 @@ class Game {
     func getDrawing(drawingFile: String, completion: (image: UIImage) -> Void) {
         Alamofire.request(APIRouter.GetDrawing(self.id, drawingFile))
             .response(queue: nil, completionHandler: { (request, response, data, error) in
-                let image = UIImage(data: data!, scale:1)
-                completion(image: image!)
+                guard let image = UIImage(data: data!, scale: 1) else {
+                    print("Error while converting data to image")
+                    return
+                }
+                completion(image: image)
             })
     }
     
