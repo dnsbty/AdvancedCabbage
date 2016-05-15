@@ -25,8 +25,10 @@ class NewGameViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if type == "create" {
+            name.text = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String
             name.becomeFirstResponder()
         } else {
+            joinName.text = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String
             joinName.becomeFirstResponder()
         }
     }
@@ -38,6 +40,7 @@ class NewGameViewController : UIViewController {
         Game.shared.create(name.text!, completion: {
             self.performSegueWithIdentifier("createQueue", sender: self)
         })
+        NSUserDefaults.standardUserDefaults().setObject(name.text!, forKey: "name")
     }
     
     @IBAction func joinGame(sender: AnyObject) {
@@ -45,5 +48,6 @@ class NewGameViewController : UIViewController {
         Game.shared.join(joinCode.text!, name: joinName.text!, completion: {
             self.performSegueWithIdentifier("joinQueue", sender: self)
         })
+        NSUserDefaults.standardUserDefaults().setObject(joinName.text!, forKey: "name")
     }
 }
