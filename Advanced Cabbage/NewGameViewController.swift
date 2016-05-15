@@ -24,12 +24,17 @@ class NewGameViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userName = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String
         if type == "create" {
-            name.text = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String
+            name.text = userName
             name.becomeFirstResponder()
         } else {
-            joinName.text = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String
-            joinName.becomeFirstResponder()
+            joinName.text = userName
+            if userName != nil {
+                joinCode.becomeFirstResponder()
+            } else {
+                joinName.becomeFirstResponder()
+            }
         }
     }
     
