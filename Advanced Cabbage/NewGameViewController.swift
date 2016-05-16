@@ -53,7 +53,7 @@ class NewGameViewController : UIViewController, UITextFieldDelegate {
     
     @IBAction func joinGame(sender: AnyObject) {
         joinButton.enabled = false
-        Game.shared.join(joinCode.text!, name: joinName.text!, completion: {
+        Game.shared.join(joinCode.text!.uppercaseString, name: joinName.text!, completion: {
             self.performSegueWithIdentifier("joinQueue", sender: self)
         })
         NSUserDefaults.standardUserDefaults().setObject(joinName.text!, forKey: "name")
