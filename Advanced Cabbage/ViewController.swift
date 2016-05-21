@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import StoreKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SKStoreProductViewControllerDelegate {
     
     var results : [ResultCard]?
+    var urlString : String?
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "createGame" {
@@ -22,6 +24,9 @@ class ViewController: UIViewController {
         } else if segue.identifier == "showResults" {
             let destinationVC = segue.destinationViewController as! ResultViewController
             destinationVC.cards = results!
+        } else if segue.identifier == "showWebView" {
+            let destinationVC = segue.destinationViewController as! WebViewController
+            destinationVC.urlString = urlString
         }
     }
 
@@ -30,6 +35,28 @@ class ViewController: UIViewController {
             self.results = results
             self.performSegueWithIdentifier("showResults", sender: self)
         })
+    }
+    
+    func openStoreProductWithiTunesIdentifier(identifier: String) {
+        let storeViewController = SKStoreProductViewController()
+        storeViewController.delegate = self
+        
+        let parameters = [ SKStoreProductParameterITunesItemIdentifier : identifier ]
+        storeViewController.loadProductWithParameters(parameters, completionBlock: {[weak self] (loaded, error) -> Void in
+            if loaded {
+                self?.presentViewController(storeViewController, animated: true, completion: nil)
+            }
+            
+            })
+    }
+    
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func openWebViewModalWithURL(urlString: String) {
+        self.urlString = urlString
+        self.performSegueWithIdentifier("showWebView", sender: self)
     }
 }
 

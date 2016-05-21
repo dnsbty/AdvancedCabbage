@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import StoreKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SKStoreProductViewControllerDelegate {
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        registerForPushNotifications(application)
+        
+        // check if launched from notification
+        if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
+            // grab the APS dictionary from the notification object
+            let aps = notification["aps"] as! [String: AnyObject]
+            handleNotification(aps)
+        }
+        
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != .None {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let tokenChars = UnsafePointer<CChar>(deviceToken.bytes)
+        var tokenString = ""
+        
+        for i in 0..<deviceToken.length {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        NSUserDefaults.standardUserDefaults().setObject(tokenString, forKey: "deviceToken")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Failed to register:", error)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        let aps = userInfo["aps"] as! [String: AnyObject]
+        handleNotification(aps)
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -41,6 +76,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func registerForPushNotifications(application: UIApplication) {
+        let notificationSettings = UIUserNotificationSettings(
+            forTypes: [.Badge, .Sound, .Alert], categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+    }
+    
+    func handleNotification(notification: [String: AnyObject]) {
+        if let viewController = window?.rootViewController as? ViewController {
+            if let appID = notification["appID"] as? String {
+                viewController.openStoreProductWithiTunesIdentifier(appID)
+            } else if let linkURL = notification["linkURL"] as? String {
+                viewController.openWebViewModalWithURL(linkURL)
+            }
+        }
+    }
 }
 

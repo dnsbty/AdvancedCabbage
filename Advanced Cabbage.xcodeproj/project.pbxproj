@@ -13,6 +13,7 @@
 		952D24001CCB012C007E0093 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952D23FE1CCB012C007E0093 /* Main.storyboard */; };
 		952D24021CCB012C007E0093 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 952D24011CCB012C007E0093 /* Assets.xcassets */; };
 		952D24051CCB012C007E0093 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 952D24031CCB012C007E0093 /* LaunchScreen.storyboard */; };
+		958DD9701CF0580A00A19587 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958DD96F1CF0580A00A19587 /* WebViewController.swift */; };
 		95ADB04C1CDA807100AFB46B /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB04B1CDA807100AFB46B /* APIRouter.swift */; };
 		95ADB04E1CDA827800AFB46B /* NewGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB04D1CDA827800AFB46B /* NewGameViewController.swift */; };
 		95ADB0551CDABDA700AFB46B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADB0541CDABDA700AFB46B /* Game.swift */; };
@@ -39,6 +40,7 @@
 		952D24011CCB012C007E0093 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		952D24041CCB012C007E0093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		952D24061CCB012C007E0093 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		958DD96F1CF0580A00A19587 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		95ADB04B1CDA807100AFB46B /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		95ADB04D1CDA827800AFB46B /* NewGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameViewController.swift; sourceTree = "<group>"; };
 		95ADB0541CDABDA700AFB46B /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				95CD9E9D1CE83536003FF9E0 /* ResultViewController.swift */,
 				95CD9E9F1CE837DC003FF9E0 /* CardViewController.swift */,
 				95CD9EA11CE83A81003FF9E0 /* ViewControllerProvider.swift */,
+				958DD96F1CF0580A00A19587 /* WebViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -193,6 +196,11 @@
 					952D23F61CCB012C007E0093 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = QQWWMCLZJZ;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -281,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95CD9E9A1CE53C1D003FF9E0 /* WordAnswerViewController.swift in Sources */,
+				958DD9701CF0580A00A19587 /* WebViewController.swift in Sources */,
 				95CD9EA41CE83AD5003FF9E0 /* ResultCard.swift in Sources */,
 				95CD9EA21CE83A81003FF9E0 /* ViewControllerProvider.swift in Sources */,
 				952D23FD1CCB012C007E0093 /* ViewController.swift in Sources */,
@@ -417,6 +426,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dennisbeatty.Advanced-Cabbage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -432,6 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dennisbeatty.Advanced-Cabbage";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
