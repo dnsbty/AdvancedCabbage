@@ -27,4 +27,14 @@ class WebViewController : UIViewController {
     @IBAction func closeWindow(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func sharePage(sender: AnyObject) {
+        if let url = NSURL(string: urlString!) {
+            let objectsToShare = [url]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = sender as? UIView
+            self.presentViewController(activityVC, animated: true, completion: nil)
+        }
+    }
 }
