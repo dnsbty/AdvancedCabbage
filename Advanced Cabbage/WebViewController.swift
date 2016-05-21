@@ -11,6 +11,7 @@ import UIKit
 class WebViewController : UIViewController {
     var urlString : String?
     @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
         if urlString != nil {
@@ -19,6 +20,11 @@ class WebViewController : UIViewController {
                 return
             }
             webView.loadRequest(NSURLRequest(URL: url))
+            navBar.title = url.host
         }
+    }
+    
+    @IBAction func closeWindow(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
