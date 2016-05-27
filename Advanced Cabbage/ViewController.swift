@@ -12,7 +12,6 @@ import StoreKit
 class ViewController: UIViewController, SKStoreProductViewControllerDelegate {
     
     var results : [ResultCard]?
-    var urlString : String?
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "createGame" {
@@ -24,9 +23,6 @@ class ViewController: UIViewController, SKStoreProductViewControllerDelegate {
         } else if segue.identifier == "showResults" {
             let destinationVC = segue.destinationViewController as! ResultViewController
             destinationVC.cards = results!
-        } else if segue.identifier == "showWebView" {
-            let destinationVC = segue.destinationViewController as! WebViewController
-            destinationVC.urlString = urlString
         }
     }
 
@@ -52,11 +48,6 @@ class ViewController: UIViewController, SKStoreProductViewControllerDelegate {
     
     func productViewControllerDidFinish(viewController: SKStoreProductViewController) {
         viewController.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func openWebViewModalWithURL(urlString: String) {
-        self.urlString = urlString
-        self.performSegueWithIdentifier("showWebView", sender: self)
     }
 }
 

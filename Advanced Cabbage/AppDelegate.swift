@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import SafariServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, SKStoreProductViewControllerDelegate {
@@ -87,7 +88,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SKStoreProductViewControl
             if let appID = notification["appID"] as? String {
                 viewController.openStoreProductWithiTunesIdentifier(appID)
             } else if let linkURL = notification["linkURL"] as? String {
-                viewController.openWebViewModalWithURL(linkURL)
+                guard let url = NSURL(string: linkURL) else {
+                    print("Error converting notification url to NSURL object")
+                    return
+                }
+                let safari = SFSafariViewController(URL: url)
+                viewController.presentViewController(safari, animated: true, completion: nil)
             }
         }
     }
